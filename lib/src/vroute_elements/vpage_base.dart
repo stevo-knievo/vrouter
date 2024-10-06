@@ -7,8 +7,9 @@ import 'package:vrouter/src/vrouter_core.dart';
 
 /// A [VRouteElement] similar to [VWidgetBase] but which allows you to specify your own page
 /// thanks to [pageBuilder]
-class VPageBase extends VRouteElement
+class VPageBase
     with
+        VRouteElement,
         VRouteElementSingleSubRoute,
         VRouteElementWithPage,
         VoidVGuard,
@@ -43,8 +44,7 @@ class VPageBase extends VRouteElement
   });
 
   VPageBase.builder({
-    required Page Function(LocalKey key, Widget child, String? name)
-        pageBuilder,
+    required Page Function(LocalKey key, Widget child, String? name) pageBuilder,
     required Widget Function(BuildContext context, VRouterData state) builder,
     LocalKey? key,
     String? name,

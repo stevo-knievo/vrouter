@@ -7,7 +7,7 @@ abstract class VRouterSailor implements VRouterNavigator, VRouterData {}
 
 /// Same as [VRouterSailor] except that [VRouter] has been
 /// initialized so we are sure to have a url
-abstract class InitializedVRouterSailor implements VRouterSailor {
+mixin InitializedVRouterSailor implements VRouterSailor {
   @override
   String get url;
 
@@ -18,6 +18,5 @@ abstract class InitializedVRouterSailor implements VRouterSailor {
   String get hash => Uri.decodeComponent(Uri.parse(url).fragment);
 
   @override
-  String? get previousPath =>
-      previousUrl != null ? Uri.parse(previousUrl!).path : null;
+  String? get previousPath => previousUrl != null ? Uri.parse(previousUrl!).path : null;
 }

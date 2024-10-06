@@ -17,8 +17,9 @@ class WidgetsVRouter extends VRouterApp {
   final List<VRouteElement> routes;
 
   @override
-  final Widget Function(Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child)? buildTransition;
+  final Widget Function(
+          Animation<double> animation, Animation<double> secondaryAnimation, Widget child)?
+      buildTransition;
 
   @override
   final Duration? transitionDuration;
@@ -33,8 +34,7 @@ class WidgetsVRouter extends VRouterApp {
   final List<VLogLevel> logs;
 
   @override
-  Future<void> beforeEnter(VRedirector vRedirector) =>
-      _beforeEnter(vRedirector);
+  Future<void> beforeEnter(VRedirector vRedirector) => _beforeEnter(vRedirector);
   final Future<void> Function(VRedirector vRedirector) _beforeEnter;
 
   @override
@@ -49,18 +49,15 @@ class WidgetsVRouter extends VRouterApp {
   ) _beforeLeave;
 
   @override
-  void afterEnter(BuildContext context, String? from, String to) =>
-      _afterEnter(context, from, to);
-  final void Function(BuildContext context, String? from, String to)
-      _afterEnter;
+  void afterEnter(BuildContext context, String? from, String to) => _afterEnter(context, from, to);
+  final void Function(BuildContext context, String? from, String to) _afterEnter;
 
   @override
   Future<void> onPop(VRedirector vRedirector) => _onPop(vRedirector);
   final Future<void> Function(VRedirector vRedirector) _onPop;
 
   @override
-  Future<void> onSystemPop(VRedirector vRedirector) =>
-      _onSystemPop(vRedirector);
+  Future<void> onSystemPop(VRedirector vRedirector) => _onSystemPop(vRedirector);
   final Future<void> Function(VRedirector vRedirector) _onSystemPop;
 
   @override
@@ -75,19 +72,15 @@ class WidgetsVRouter extends VRouterApp {
   WidgetsVRouter({
     Key? key,
     required this.routes,
-    Future<void> Function(VRedirector vRedirector) beforeEnter =
-        VoidVGuard.voidBeforeEnter,
+    Future<void> Function(VRedirector vRedirector) beforeEnter = VoidVGuard.voidBeforeEnter,
     Future<void> Function(
       VRedirector vRedirector,
       void Function(Map<String, String> historyState) saveHistoryState,
-    )
-        beforeLeave = VoidVGuard.voidBeforeLeave,
+    ) beforeLeave = VoidVGuard.voidBeforeLeave,
     void Function(BuildContext context, String? from, String to) afterEnter =
         VoidVGuard.voidAfterEnter,
-    Future<void> Function(VRedirector vRedirector) onPop =
-        VoidVPopHandler.voidOnPop,
-    Future<void> Function(VRedirector vRedirector) onSystemPop =
-        VoidVPopHandler.voidOnSystemPop,
+    Future<void> Function(VRedirector vRedirector) onPop = VoidVPopHandler.voidOnPop,
+    Future<void> Function(VRedirector vRedirector) onSystemPop = VoidVPopHandler.voidOnSystemPop,
     this.buildTransition,
     this.transitionDuration,
     this.reverseTransitionDuration,
@@ -96,8 +89,9 @@ class WidgetsVRouter extends VRouterApp {
     this.logs = VLogs.info,
     this.navigatorObservers = const [],
     this.builder,
-    @Deprecated('Please use navigatorKey instead.\n This has been removed because it is redundant with navigatorKey.')
-        this.appRouterKey,
+    @Deprecated(
+        'Please use navigatorKey instead.\n This has been removed because it is redundant with navigatorKey.')
+    this.appRouterKey,
     this.navigatorKey,
     // Bellow are the WidgetsApp parameters
     this.title = '',
@@ -429,8 +423,7 @@ class WidgetsVRouter extends VRouterApp {
     VRouterSailor? vRouterData;
 
     // First try to get a local MaterialVRouterData
-    vRouterData =
-        context.dependOnInheritedWidgetOfExactType<LocalVRouterData>();
+    vRouterData = context.dependOnInheritedWidgetOfExactType<LocalVRouterData>();
     if (vRouterData != null) {
       return vRouterData;
     }
@@ -485,8 +478,8 @@ class WidgetsVRouterState extends State<WidgetsVRouter>
         localeResolutionCallback: widget.localeResolutionCallback,
         supportedLocales: widget.supportedLocales,
         showPerformanceOverlay: widget.showPerformanceOverlay,
-        checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
-        checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
+        // checkerboardRasterCacheImages: widget.checkerboardRasterCacheImages,
+        // checkerboardOffscreenLayers: widget.checkerboardOffscreenLayers,
         showSemanticsDebugger: widget.showSemanticsDebugger,
         debugShowWidgetInspector: widget.debugShowWidgetInspector,
         debugShowCheckedModeBanner: widget.debugShowCheckedModeBanner,

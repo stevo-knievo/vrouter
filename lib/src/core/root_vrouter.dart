@@ -3,24 +3,20 @@ import 'package:vrouter/src/vrouter_vroute_elements.dart';
 import 'package:vrouter/src/core/vroute_element.dart';
 import 'package:vrouter/src/core/vredirector.dart';
 
-class RootVRouter extends VRouteElement with VRouteElementSingleSubRoute {
+class RootVRouter with VRouteElement, VRouteElementSingleSubRoute {
   final List<VRouteElement> routes;
 
   RootVRouter({
     required this.routes,
-    Future<void> Function(VRedirector vRedirector) beforeEnter =
-        VoidVGuard.voidBeforeEnter,
+    Future<void> Function(VRedirector vRedirector) beforeEnter = VoidVGuard.voidBeforeEnter,
     Future<void> Function(
       VRedirector vRedirector,
       void Function(Map<String, String> historyState) saveHistoryState,
-    )
-        beforeLeave = VoidVGuard.voidBeforeLeave,
+    ) beforeLeave = VoidVGuard.voidBeforeLeave,
     void Function(BuildContext context, String? from, String to) afterEnter =
         VoidVGuard.voidAfterEnter,
-    Future<void> Function(VRedirector vRedirector) onPop =
-        VoidVPopHandler.voidOnPop,
-    Future<void> Function(VRedirector vRedirector) onSystemPop =
-        VoidVPopHandler.voidOnSystemPop,
+    Future<void> Function(VRedirector vRedirector) onPop = VoidVPopHandler.voidOnPop,
+    Future<void> Function(VRedirector vRedirector) onSystemPop = VoidVPopHandler.voidOnSystemPop,
   })  : _beforeEnter = beforeEnter,
         _beforeLeave = beforeLeave,
         _afterEnter = afterEnter,
@@ -28,8 +24,7 @@ class RootVRouter extends VRouteElement with VRouteElementSingleSubRoute {
         _onSystemPop = onSystemPop;
 
   @override
-  Future<void> beforeEnter(VRedirector vRedirector) =>
-      _beforeEnter(vRedirector);
+  Future<void> beforeEnter(VRedirector vRedirector) => _beforeEnter(vRedirector);
   final Future<void> Function(VRedirector vRedirector) _beforeEnter;
 
   @override
@@ -44,18 +39,15 @@ class RootVRouter extends VRouteElement with VRouteElementSingleSubRoute {
   ) _beforeLeave;
 
   @override
-  void afterEnter(BuildContext context, String? from, String to) =>
-      _afterEnter(context, from, to);
-  final void Function(BuildContext context, String? from, String to)
-      _afterEnter;
+  void afterEnter(BuildContext context, String? from, String to) => _afterEnter(context, from, to);
+  final void Function(BuildContext context, String? from, String to) _afterEnter;
 
   @override
   Future<void> onPop(VRedirector vRedirector) => _onPop(vRedirector);
   final Future<void> Function(VRedirector vRedirector) _onPop;
 
   @override
-  Future<void> onSystemPop(VRedirector vRedirector) =>
-      _onSystemPop(vRedirector);
+  Future<void> onSystemPop(VRedirector vRedirector) => _onSystemPop(vRedirector);
   final Future<void> Function(VRedirector vRedirector) _onSystemPop;
 
   @override

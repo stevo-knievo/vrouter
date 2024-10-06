@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vrouter/src/core/route.dart';
 import 'package:vrouter/src/core/vredirector.dart';
@@ -6,7 +5,7 @@ import 'package:vrouter/src/core/vredirector.dart';
 /// [VRouteElement] is the base class for any object used in routes, stackedRoutes
 /// or nestedRoutes
 @immutable
-abstract class VRouteElement {
+mixin VRouteElement {
   /// [buildRoute] must return [VRoute] if it constitute (which its subroutes or not) a valid
   /// route given the input parameters
   /// [VRoute] should describe this valid route
@@ -275,8 +274,7 @@ class ValidNameResult extends GetPathFromNameResult {
   ValidNameResult({required this.path});
 }
 
-abstract class ErrorGetPathFromNameResult extends GetPathFromNameResult
-    implements Error {
+abstract class ErrorGetPathFromNameResult extends GetPathFromNameResult implements Error {
   String get error;
 
   @override
@@ -320,22 +318,18 @@ class MissingPathParamsError extends PathParamsError {
   final List<String> missingPathParams;
   final List<String> pathParams;
 
-  MissingPathParamsError(
-      {required this.pathParams, required this.missingPathParams});
+  MissingPathParamsError({required this.pathParams, required this.missingPathParams});
 
-  String get error =>
-      'Path parameters given: $pathParams, missing: $missingPathParams';
+  String get error => 'Path parameters given: $pathParams, missing: $missingPathParams';
 }
 
 class OverlyPathParamsError extends PathParamsError {
   final List<String> expectedPathParams;
   final List<String> pathParams;
 
-  OverlyPathParamsError(
-      {required this.pathParams, required this.expectedPathParams});
+  OverlyPathParamsError({required this.pathParams, required this.expectedPathParams});
 
-  String get error =>
-      'Path parameters given: $pathParams, expected: $expectedPathParams';
+  String get error => 'Path parameters given: $pathParams, expected: $expectedPathParams';
 }
 
 class PathParamsErrorsNameResult extends ErrorGetPathFromNameResult {
