@@ -13,7 +13,10 @@ dependencies:
     sdk: flutter
   url_strategy: ^0.2.0
   url_launcher: ^6.1.2
-  move_to_background: ^1.0.2
+  move_to_background:
+    git:
+      url: https://github.com/stevo-knievo/move_to_background
+      ref: 6b3e5821ebdd932ff86bc44ca3bc3ba2eff8f694
 
 dev_dependencies:
   flutter_test:
@@ -24,7 +27,6 @@ dev_dependencies:
     sdk: flutter
   integration_test:
     sdk: flutter
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
